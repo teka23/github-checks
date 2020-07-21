@@ -11,6 +11,7 @@ jobs:
       - image: cimg/base:2020.01
     steps:
       - checkout
+      - run: sleep 100
       - run: echo "Fail"
       - run: exit 1
 workflows:
