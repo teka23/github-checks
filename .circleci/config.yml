@@ -13,7 +13,6 @@ jobs:
       - checkout
       - run: sleep 100
       - run: echo "Fail"
-      - run: exit 1
 workflows:
   version: 2
   build_and_test:
