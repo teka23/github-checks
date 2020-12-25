@@ -21,7 +21,7 @@ workflows:
       - test
       - hold:
           type: approval
-          requires: test
+          requires: [test]
       - e2e_test:
           requires:
             - hold
