@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   test:
     docker:
@@ -11,7 +11,6 @@ jobs:
       - image: cimg/base:2020.01
     steps:
       - checkout
-      - run: sleep 100
       - run: echo "Fail"
       - run: exit 1
 workflows:
@@ -19,9 +18,12 @@ workflows:
   build_and_test:
     jobs:
       - test
+      - hold:
+          type: approval
+          requires: [test]
       - e2e_test:
           requires:
-            - test
+            - hold
           filters:
             branches:
               only: master
